@@ -4,7 +4,7 @@ A full-stack capstone starter implementation based on the supplied B.E. CSE (AI 
 
 ## Stack
 - Frontend: React + Vite + React Router + Recharts
-- Backend: Java 17, Spring Boot 3, Spring Security, JWT, Spring Data JPA
+- Backend: Java 25 (LTS), Spring Boot 3, Spring Security, JWT, Spring Data JPA
 - Database: PostgreSQL
 - Optional cache service: Redis (included in Docker Compose for future summary caching)
 
@@ -25,7 +25,7 @@ A full-stack capstone starter implementation based on the supplied B.E. CSE (AI 
 4. Backend API: http://localhost:8080/api
 5. PostgreSQL: localhost:5432 (database `spendwise`, user `spendwise`, password `spendwise`)
 
-The frontend dev server proxies `/api` to the backend container. For local development without Docker, start PostgreSQL, run the backend with `mvn spring-boot:run`, then run `npm install && npm run dev` inside `frontend`.
+The frontend dev server proxies `/api` to the backend container. For local development without Docker, start PostgreSQL and run `mvn spring-boot:run` in `backend`, then run `npm install && npm run dev` inside `frontend`. To run the backend without PostgreSQL for local testing, use `mvn spring-boot:run -Dspring-boot.run.profiles=local` in `backend`; the local profile uses an in-memory H2 database, so its data is discarded when the backend stops.
 
 ## Local backend configuration
 Environment variables (defaults are for local development):

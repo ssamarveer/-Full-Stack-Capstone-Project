@@ -7,6 +7,6 @@ import com.spendwise.model.Budget;import com.spendwise.repo.BudgetRepository;imp
  @GetMapping public List<Budget> all(){return repo.findAllByUserOrderByIdDesc(current.get());}
  @PostMapping public Budget create(@RequestBody Request r){return save(new Budget(),r);}
  @PutMapping("/{id}") public Budget update(@PathVariable Long id,@RequestBody Request r){return save(owned(id),r);}
- private Budget save(Budget b,Request r){if(r.month()==null||!r.month().matches("\d{4}-\d{2}")||r.category()==null||r.limitAmount()==null||r.limitAmount().compareTo(BigDecimal.ZERO)<=0)throw new IllegalArgumentException("Provide month (YYYY-MM), category and positive limit");b.setUser(current.get());b.setMonth(r.month());b.setCategory(r.category());b.setLimitAmount(r.limitAmount());return repo.save(b);}
+ private Budget save(Budget b,Request r){if(r.month()==null||!r.month().matches("[0-9]{4}-[0-9]{2}")||r.category()==null||r.limitAmount()==null||r.limitAmount().compareTo(BigDecimal.ZERO)<=0)throw new IllegalArgumentException("Provide month (YYYY-MM), category and positive limit");b.setUser(current.get());b.setMonth(r.month());b.setCategory(r.category());b.setLimitAmount(r.limitAmount());return repo.save(b);}
  @DeleteMapping("/{id}") public void delete(@PathVariable Long id){repo.delete(owned(id));}
 }
