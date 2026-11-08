@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/spendwise}
+    username: ${DB_USERNAME:spendwise}
+    password: ${DB_PASSWORD:spendwise}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  jackson:
+    time-zone: UTC
+server:
+  port: 8080
+  error:
+    include-message: always
+app:
+  jwt:
+    secret: ${JWT_SECRET:SpendWiseLocalDevelopmentSecretKeyChangeBeforeDeployment2026}
+    expiration: ${JWT_EXPIRATION:86400000}
